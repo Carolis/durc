@@ -1,0 +1,14 @@
+{
+  "name": "durc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "back",
+    "front"
+  ],
+  "devDependencies": {
+    "prettier": "^2.3.2"
+  }
+}
