@@ -1,6 +1,6 @@
 # durc
 
-## This is a compilation of basic CRUD operations and simple database interaction examples following different technologies and tools distributed in each repo folder
+## This is a collection of basic CRUD and simple database operation examples
 
 | Folder |          Tools           |
 | ------ | :----------------------: |
