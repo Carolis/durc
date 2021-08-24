@@ -1,6 +1,6 @@
 # durc
 
-## This is a collection of basic CRUD and simple database operation examples
+## This is a collection of basic CRUD/database operation examples
 
 | Folder |          Tools           |
 | ------ | :----------------------: |
