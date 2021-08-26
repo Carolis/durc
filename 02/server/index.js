@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const mysql = require("mysql")
+const cors = require("cors")
 
 const db = mysql.createPool({
   host: "localhost",
@@ -9,11 +10,19 @@ const db = mysql.createPool({
   database: "durc02",
 })
 
-app.get("/", (req, res) => {
-  const databaseInsert ="INSERT INTO movie_reviews (movieName, movieReview) VALUES ('Alice in Wonderland','Funny rabbits and stuff');"
-  db.query(databaseInsert, (err, result) => {
-    if (err) throw err;
-    res.send("Hewwo query")
+app.use(express.json())
+app.use(cors())
+app.use(express.urlencoded({ extended: true }))
+
+app.post("/api/insert", (req, res) => {
+  const movieName = req.body.movieName
+  const movieReview = req.body.movieReview
+
+  const databaseInsert =
+    "INSERT INTO movie_reviews (movieName, movieReview) VALUES (?,?);"
+  db.query(databaseInsert, [movieName, movieReview], (error, result) => {
+    if (error) console.log(error)
+    console.log("🚀 ~ file: index.js ~ line 23 ~ db.query ~ result", result)
   })
 })
 
