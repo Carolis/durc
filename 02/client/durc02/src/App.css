@@ -12,3 +12,13 @@
 .form input {
   max-width: 300px;
 }
+
+.cards {
+  display: flex;
+}
+
+.cards div {
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 10px;
+}

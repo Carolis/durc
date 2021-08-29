@@ -45,17 +45,14 @@ function App() {
         />
         <button onClick={submitMovieReview}>Send</button>
       </form>
-      <div>
+      <div class="cards">
         {reviewsList.map((movie, index) => {
-          console.log(
-            "🚀 ~ file: App.js ~ line 50 ~ {reviewsList.map ~ movie",
-            movie
-          )
           return (
             <div key={index}>
-              <span>
-                <b>{movie.movieName} </b> {movie.movieReview}
-              </span>
+              <h2>{movie.movieName} </h2> <p>{movie.movieReview}</p>
+              <button>Remove review</button>
+              <input type="text" id="update" />
+              <button>Update review</button>
             </div>
           )
         })}
