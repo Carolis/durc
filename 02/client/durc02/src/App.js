@@ -19,7 +19,7 @@ function App() {
       movieName,
       movieReview,
     }).then(() => {
-      alert("Review sent")
+      setReviewsList([...reviewsList, { movieName, movieReview }])
     })
   }
 
