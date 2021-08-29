@@ -26,6 +26,15 @@ app.post("/api/insert", (req, res) => {
   })
 })
 
+app.get("/api/list", (req, res) => {
+  const databaseGet = "SELECT * FROM movie_reviews;"
+
+  db.query(databaseGet, (error, result) => {
+    if (error) console.log(error)
+    res.send(result)
+  })
+})
+
 app.listen(3001, () => {
   console.log("Server up at 3001 port")
 })
