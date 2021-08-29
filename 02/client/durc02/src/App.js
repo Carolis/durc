@@ -9,7 +9,6 @@ function App() {
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/list").then((response) => {
-      console.log(response)
       setReviewsList(response.data)
     })
   }, [])
@@ -21,6 +20,10 @@ function App() {
     }).then(() => {
       setReviewsList([...reviewsList, { movieName, movieReview }])
     })
+  }
+
+  const deleteMovieReview = (movie) => {
+    Axios.delete(`http://localhost:3001/api/delete/${movie}`)
   }
 
   return (
@@ -45,12 +48,18 @@ function App() {
         />
         <button onClick={submitMovieReview}>Send</button>
       </form>
-      <div class="cards">
+      <div className="cards">
         {reviewsList.map((movie, index) => {
           return (
             <div key={index}>
               <h2>{movie.movieName} </h2> <p>{movie.movieReview}</p>
-              <button>Remove review</button>
+              <button
+                onClick={() => {
+                  deleteMovieReview(movie.movieName)
+                }}
+              >
+                Remove review
+              </button>
               <input type="text" id="update" />
               <button>Update review</button>
             </div>

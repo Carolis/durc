@@ -14,6 +14,16 @@ app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 
+//Delete
+app.delete("/api/delete/:movieName", (req, res) => {
+  const name = req.params.movieName
+  const databaseDelete = "DELETE FROM movie_reviews WHERE movieName = ?;"
+  db.query(databaseDelete, name, (error, result) => {
+    if (error) console.log(error)
+  })
+})
+
+//Create
 app.post("/api/insert", (req, res) => {
   const movieName = req.body.movieName
   const movieReview = req.body.movieReview
@@ -22,10 +32,10 @@ app.post("/api/insert", (req, res) => {
     "INSERT INTO movie_reviews (movieName, movieReview) VALUES (?,?);"
   db.query(databaseInsert, [movieName, movieReview], (error, result) => {
     if (error) console.log(error)
-    console.log("🚀 ~ file: index.js ~ line 23 ~ db.query ~ result", result)
   })
 })
 
+//Read
 app.get("/api/list", (req, res) => {
   const databaseGet = "SELECT * FROM movie_reviews;"
 
