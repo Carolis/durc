@@ -45,6 +45,18 @@ app.get("/api/list", (req, res) => {
   })
 })
 
+//Update
+app.put("/api/update", (req, res) => {
+  const name = req.body.movieName
+  const review = req.body.movieReview
+  const databaseUpdate =
+    "UPDATE movie_reviews SET movieReview = ? WHERE movieName = ?;"
+
+  db.query(databaseUpdate, [review, name], (error, result) => {
+    if (error) console.log(error)
+  })
+})
+
 app.listen(3001, () => {
-  console.log("Server up at 3001 port")
+  console.log("Server up | port 3001")
 })
